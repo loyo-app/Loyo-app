@@ -1,0 +1,347 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Merriweather:wght@400;700&family=IBM+Plex+Mono:wght@500&display=swap');
+
+:root{
+  --navy:#182531;
+  --navy-deep:#0f1922;
+  --cream:#f1e9da;
+  --paper:#faf6ee;
+  --brick:#8c2f39;
+  --brick-deep:#6f232b;
+  --brass:#b08d57;
+  --brass-light:#d8bd8a;
+  --charcoal:#2a2622;
+  --muted:#6b6255;
+  --ok:#3f6b4f;
+}
+
+*{box-sizing:border-box;}
+
+body{
+  margin:0;
+  background:var(--cream);
+  color:var(--charcoal);
+  font-family:'Merriweather', Georgia, serif;
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+}
+
+h1,h2,h3,.eyebrow,button{
+  font-family:'Oswald', sans-serif;
+  letter-spacing:0.02em;
+}
+
+/* ---------- Header / barber pole ---------- */
+.site-header{
+  width:100%;
+  background:var(--navy);
+  color:var(--paper);
+  display:flex;
+  align-items:center;
+  gap:16px;
+  padding:22px 20px;
+  border-bottom:4px solid var(--brass);
+}
+
+.pole{
+  position:relative;
+  width:26px;
+  height:56px;
+  border-radius:13px;
+  overflow:hidden;
+  box-shadow:0 0 0 2px var(--brass-light) inset;
+  flex-shrink:0;
+}
+
+.pole-stripes{
+  position:absolute;
+  top:-20px;
+  left:-20px;
+  width:calc(100% + 40px);
+  height:calc(100% + 80px);
+  background:repeating-linear-gradient(
+    45deg,
+    var(--brick) 0 10px,
+    var(--paper) 10px 20px,
+    var(--navy-deep) 20px 30px
+  );
+  animation:pole-spin 2.4s linear infinite;
+}
+
+@keyframes pole-spin{
+  from{transform:translateY(-40px);}
+  to{transform:translateY(0px);}
+}
+
+.pole-cap{position:absolute;left:-2px;right:-2px;height:8px;background:var(--brass);}
+.pole-cap.top{top:-2px;border-radius:6px 6px 0 0;}
+.pole-cap.bottom{bottom:-2px;border-radius:0 0 6px 6px;}
+
+.header-text h1{
+  margin:0;
+  font-size:1.5rem;
+  font-weight:700;
+  line-height:1;
+}
+.header-text .tagline{
+  margin:4px 0 0;
+  font-size:0.8rem;
+  color:var(--brass-light);
+  text-transform:uppercase;
+  letter-spacing:0.12em;
+}
+
+/* ---------- Layout ---------- */
+#app{
+  width:100%;
+  max-width:420px;
+  padding:24px 18px 40px;
+  flex:1;
+}
+
+.card{
+  background:var(--paper);
+  border-radius:14px;
+  padding:26px 22px;
+  box-shadow:0 1px 2px rgba(0,0,0,0.06), 0 8px 24px rgba(24,37,49,0.08);
+  border:1px solid rgba(24,37,49,0.06);
+}
+
+.hidden{display:none !important;}
+
+.eyebrow{
+  margin:0 0 6px;
+  font-size:0.72rem;
+  text-transform:uppercase;
+  letter-spacing:0.14em;
+  color:var(--brick);
+  font-weight:600;
+}
+
+h2{font-size:1.5rem;margin:0 0 8px;color:var(--navy);}
+.muted{color:var(--muted);font-size:0.92rem;line-height:1.5;margin:0 0 20px;}
+
+/* ---------- Login form ---------- */
+#login-form{display:flex;flex-direction:column;gap:12px;}
+
+input[type="tel"], input[type="password"]{
+  font-family:'IBM Plex Mono', monospace;
+  font-size:1.05rem;
+  padding:14px 16px;
+  border-radius:8px;
+  border:1.5px solid rgba(24,37,49,0.18);
+  background:#fff;
+  color:var(--charcoal);
+  outline:none;
+}
+input[type="tel"]:focus, input[type="password"]:focus{
+  border-color:var(--brick);
+  box-shadow:0 0 0 3px rgba(140,47,57,0.12);
+}
+
+button{
+  cursor:pointer;
+  border:none;
+  font-size:0.95rem;
+  font-weight:600;
+}
+button:focus-visible{outline:3px solid var(--brass);outline-offset:2px;}
+
+.primary{
+  background:var(--brick);
+  color:var(--paper);
+  padding:14px 18px;
+  border-radius:8px;
+  transition:background 0.15s ease;
+}
+.primary:hover{background:var(--brick-deep);}
+.primary:disabled{background:#c9c2b4;color:#8a8478;cursor:not-allowed;}
+
+.ghost{
+  background:transparent;
+  color:var(--charcoal);
+  padding:14px 18px;
+  border-radius:8px;
+  border:1.5px solid rgba(24,37,49,0.18);
+}
+
+.link-btn{
+  background:none;
+  color:var(--brick);
+  padding:6px 0;
+  text-decoration:underline;
+  text-underline-offset:3px;
+}
+.link-btn.subtle{
+  display:block;
+  margin-top:22px;
+  color:var(--muted);
+  font-size:0.82rem;
+}
+
+/* ---------- Profile ---------- */
+.profile-head{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-start;
+  margin-bottom:22px;
+}
+.phone-display{
+  font-family:'IBM Plex Mono', monospace;
+  font-size:1.2rem;
+  margin:0;
+  color:var(--navy);
+}
+
+/* Check-in note */
+.checkin-note{
+  padding:12px 14px;
+  border-radius:8px;
+  font-size:0.85rem;
+  margin-bottom:18px;
+  font-family:'Merriweather', Georgia, serif;
+}
+.checkin-note.success{
+  background:rgba(63,107,79,0.12);
+  color:var(--ok);
+  border:1px solid rgba(63,107,79,0.25);
+}
+.checkin-note.info{
+  background:rgba(140,47,57,0.08);
+  color:var(--brick);
+  border:1px solid rgba(140,47,57,0.2);
+}
+
+/* Ticket / punch card */
+.ticket{
+  position:relative;
+  background:var(--navy);
+  border-radius:12px;
+  padding:22px 20px 16px;
+  margin-bottom:20px;
+}
+.ticket-notch{
+  position:absolute;
+  top:50%;
+  transform:translateY(-50%);
+  width:22px;
+  height:22px;
+  background:var(--cream);
+  border-radius:50%;
+}
+.ticket-notch.left{left:-11px;}
+.ticket-notch.right{right:-11px;}
+
+.stamps-grid{
+  display:grid;
+  grid-template-columns:repeat(5, 1fr);
+  gap:10px;
+  margin-bottom:14px;
+}
+
+.stamp{
+  aspect-ratio:1;
+  border-radius:50%;
+  border:2px dashed rgba(216,189,138,0.45);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+.stamp.filled{
+  border-style:solid;
+  border-color:var(--brass);
+  background:radial-gradient(circle at 35% 30%, var(--brass-light), var(--brass));
+}
+.stamp svg{width:52%;height:52%;}
+.stamp.filled svg{stroke:var(--navy-deep);}
+.stamp:not(.filled) svg{stroke:rgba(241,233,218,0.25);}
+
+.stamp.reward{
+  border-style:solid;
+  border-color:var(--brick);
+  background:rgba(140,47,57,0.18);
+}
+.stamp.reward.filled{
+  background:radial-gradient(circle at 35% 30%, var(--brass-light), var(--brick));
+  border-color:var(--brass-light);
+}
+.reward-text{
+  font-family:'Oswald', sans-serif;
+  font-size:0.5rem;
+  line-height:1.15;
+  font-weight:600;
+  letter-spacing:0.02em;
+  text-align:center;
+  color:var(--brass-light);
+}
+.stamp.reward.filled .reward-text{
+  color:var(--navy-deep);
+}
+
+.progress-text{
+  color:var(--brass-light);
+  font-size:0.85rem;
+  text-align:center;
+  margin:0;
+}
+
+/* History */
+.history-block{margin-top:6px;}
+.history-list{list-style:none;margin:8px 0 0;padding:0;}
+.history-list li{
+  display:flex;
+  justify-content:space-between;
+  padding:8px 0;
+  border-bottom:1px solid rgba(24,37,49,0.08);
+  font-size:0.85rem;
+  color:var(--muted);
+}
+.history-list li:last-child{border-bottom:none;}
+.history-list .tag{
+  font-family:'IBM Plex Mono', monospace;
+  font-size:0.72rem;
+  padding:2px 8px;
+  border-radius:20px;
+  background:rgba(140,47,57,0.1);
+  color:var(--brick);
+}
+.history-list .tag.redeem{background:rgba(63,107,79,0.12);color:var(--ok);}
+
+.empty-note{color:var(--muted);font-size:0.85rem;font-style:italic;}
+
+/* ---------- Modal ---------- */
+.modal{
+  position:fixed;
+  inset:0;
+  background:rgba(15,25,34,0.55);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+  z-index:10;
+}
+.modal-card{
+  background:var(--paper);
+  border-radius:14px;
+  padding:24px;
+  width:100%;
+  max-width:320px;
+}
+.modal-card h3{margin:0 0 14px;font-size:1.15rem;color:var(--navy);}
+#pin-input{width:100%;margin-bottom:10px;text-align:center;letter-spacing:0.3em;}
+.error{color:var(--brick);font-size:0.82rem;margin:0 0 10px;}
+.modal-actions{display:flex;gap:10px;margin-top:6px;}
+.modal-actions button{flex:1;}
+
+/* ---------- Footer ---------- */
+.site-footer{
+  color:var(--muted);
+  font-size:0.78rem;
+  text-align:center;
+  padding:0 20px 28px;
+}
+
+@media (prefers-reduced-motion: reduce){
+  .pole-stripes{animation:none;}
+}
